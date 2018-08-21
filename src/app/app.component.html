@@ -1,9 +1,10 @@
 <header id="header">
     <div class="navbar navbar-default">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapse" data-toggle="collapse" 
-            data-target="#menu" aria-extended="false">
-                <span class="sr-only">Toogle</span>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+            data-target="#menu" aria-extended="true">
+                <span class="sr-only">Toggle</span>
+                <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -11,7 +12,7 @@
             <a class="navbar-brand" [routerLink]="['/']">
                 <img src="./assets/img/logo.png" id="logo" />
             </a>
-
+        </div>
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="nav navbar-nav">
                     <li>
@@ -20,23 +21,32 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/']">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Tarea</span>
+                        <a [routerLink]="['/']" *ngIf="identity && identity.sub">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true" >Crear Tarea</span>
                             </a>
                     </li>
+                   
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" *ngIf="!identity">
+                    <li ><a [routerLink]="['/login']">Acceder</a></li>
+                    <li ><a [routerLink]="['/register']">Registro</a></li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right" *ngIf="identity && identity.sub">
                     <li>
-                        <a [routerLink]="['/']">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true">Ajustes</span>
-                            </a>
+                        <a [routerLink]="['/']" >
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true" >Ajustes</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/']">
-                            <span class="glyphicon glyphicon-log-out" aria-hidden="true">Log out</span>
-                            </a>
+                        <a [routerLink]="['/login',1]" >
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true" > Salir</span>
+                        </a>
                     </li>
                 </ul>
-            </div>
-        </div>
+                </div>
+        
     </div>
 </header>
 <router-outlet></router-outlet>
