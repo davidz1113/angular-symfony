@@ -1,1 +1,42 @@
-<login></login>
+<header id="header">
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapse" data-toggle="collapse" 
+            data-target="#menu" aria-extended="false">
+                <span class="sr-only">Toogle</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--Logo-->
+            <a class="navbar-brand" [routerLink]="['/']">
+                <img src="./assets/img/logo.png" id="logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a [routerLink]="['/']">
+                        <span class="glyphicon glyphicon-home" aria-hidden="true">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true">Crear Tarea</span>
+                            </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true">Ajustes</span>
+                            </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/']">
+                            <span class="glyphicon glyphicon-log-out" aria-hidden="true">Log out</span>
+                            </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<router-outlet></router-outlet>
