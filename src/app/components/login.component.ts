@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         /*console.log(this._userService.getIdentity());
         console.log(this._userService.getToken());*/
         this.logOut();
+        this._userService.redirectIfIdentity(this._router);
     }
 
     logOut(){
@@ -90,4 +91,5 @@ export class LoginComponent implements OnInit {
         );
     }
 
+   
 }

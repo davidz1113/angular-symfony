@@ -3,6 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 //import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './global';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserServices {
@@ -42,5 +43,21 @@ export class UserServices {
             this.token=null;
         }
         return this.token;
+    }
+
+    register(user_to_register){
+        let json = JSON.stringify(user_to_register);
+        let params = "json="+json;
+        let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+
+        return this._http.post(this.url+'/user/new',params,{headers:headers}).pipe(map(res=>res.json()));
+    }
+
+
+    redirectIfIdentity(_router:Router){
+        let identity = this.getIdentity();
+        if(identity!=null && identity.sub){
+            _router.navigate(["/"]);
+        }
     }
 }
